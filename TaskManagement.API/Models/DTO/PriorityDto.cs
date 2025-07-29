@@ -1,6 +1,8 @@
-﻿namespace TaskManagement.API.Models.Domain
+﻿using TaskManagement.API.Models.Domain;
+
+namespace TaskManagement.API.Models.DTO
 {
-    public class Priority
+    public class PriorityDto
     {
         public Guid Id { get; set; }
         public string Level { get; set; }
