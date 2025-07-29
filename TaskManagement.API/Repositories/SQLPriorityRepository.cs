@@ -20,9 +20,19 @@ namespace TaskManagement.API.Repositories
             return priority;
         }
 
-        public Task<Priority> DeleteAsync(Guid id)
+        public async Task<Priority> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var priority = await dbContext.Priorities.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (priority == null)
+            {
+                return null;
+            }
+
+            dbContext.Priorities.Remove(priority);
+            await dbContext.SaveChangesAsync();
+
+            return priority;
         }
 
         public async Task<IEnumerable<Priority>> GetAllAsync()
@@ -35,9 +45,21 @@ namespace TaskManagement.API.Repositories
             return await dbContext.Priorities.Include(x => x.TaskItems).FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<Priority> UpdateAsync(Priority priority)
+        public async Task<Priority> UpdateAsync(Guid id, Priority priority)
         {
-            throw new NotImplementedException();
+            var existingPriority = await dbContext.Priorities.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingPriority == null)
+            {
+                return null;
+            }
+
+            existingPriority.Level = priority.Level;
+            existingPriority.TaskItems = priority.TaskItems;
+
+            await dbContext.SaveChangesAsync();
+
+            return existingPriority;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace TaskManagement.API.Mappings
         {
             CreateMap<Priority, AddPriorityRequestDto>().ReverseMap();
             CreateMap<Priority, PriorityDto>().ReverseMap();
+            CreateMap<Priority, UpdatePriorityRequestDto>().ReverseMap();
         }
     }
 }

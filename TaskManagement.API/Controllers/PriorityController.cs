@@ -49,5 +49,31 @@ namespace TaskManagement.API.Controllers
             var createdPriorityDto = mapper.Map<AddPriorityRequestDto>(createdPriority);
             return CreatedAtAction(nameof(GetById), new { id = createdPriority.Id }, createdPriorityDto);
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdatePriorityRequestDto updatePriorityRequestDto)
+        {
+            var priorityDomainModel = mapper.Map<Priority>(updatePriorityRequestDto);
+            var updatedPriority = await priorityRepository.UpdateAsync(id, priorityDomainModel);
+            if (updatedPriority == null)
+            {
+                return NotFound();
+            }
+            var updatedPriorityDto = mapper.Map<UpdatePriorityRequestDto>(updatedPriority);
+            return Ok(updatedPriorityDto);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var deletedPriority = await priorityRepository.DeleteAsync(id);
+            if (deletedPriority == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<PriorityDto>(deletedPriority));
+        }
     }
 }

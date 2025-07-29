@@ -7,7 +7,7 @@ namespace TaskManagement.API.Repositories
         Task<Priority> CreateAsync(Priority priority);
         Task<Priority?> GetByIdAsync(Guid id);
         Task<IEnumerable<Priority>> GetAllAsync();
-        Task<Priority> UpdateAsync(Priority priority);
+        Task<Priority> UpdateAsync(Guid id, Priority priority);
         Task<Priority> DeleteAsync(Guid id);
     }
 }
