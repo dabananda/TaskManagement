@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TaskManagement.API.Data;
 using TaskManagement.API.Mappings;
-using TaskManagement.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +12,6 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<TaskManagementDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TaskManagementDbConnection")));
-
-builder.Services.AddScoped<IPriorityRepository, SQLPriorityRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
