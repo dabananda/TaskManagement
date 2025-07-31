@@ -1,6 +1,6 @@
 ﻿namespace TaskManagement.API.Models.Enums
 {
-    public enum TaskStatus
+    public enum TaskItemStatus
     {
         Pending,
         InProgress,
