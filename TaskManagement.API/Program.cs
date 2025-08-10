@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TaskManagement.API.Data;
 using TaskManagement.API.Mappings;
+using TaskManagement.API.Repositories;
+using TaskManagement.API.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,9 @@ builder.Services.AddDbContext<TaskManagementDbContext>(options =>
 
 // Register AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
+
+// Register repositories
+builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
 
 var app = builder.Build();
 
