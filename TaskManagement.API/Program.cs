@@ -13,7 +13,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<TaskManagementDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TaskManagementDbConnection")));
 
-builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+// Register AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
