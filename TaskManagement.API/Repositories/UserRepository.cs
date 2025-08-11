@@ -40,7 +40,7 @@ namespace TaskManagement.API.Repositories
                 .FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task<bool> SaveChangesAsycn()
+        public async Task<bool> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync() > 0;
         }

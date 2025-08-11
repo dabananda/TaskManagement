@@ -9,5 +9,7 @@ namespace TaskManagement.API.Models
         public string Email { get; set; }
         public Role Role { get; set; }
         public ICollection<TaskAssignment> TaskAssignments { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }
