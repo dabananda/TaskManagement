@@ -3,6 +3,8 @@ using TaskManagement.API.Data;
 using TaskManagement.API.Mappings;
 using TaskManagement.API.Repositories;
 using TaskManagement.API.Repositories.Interfaces;
+using TaskManagement.API.Services;
+using TaskManagement.API.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 // Register repositories
 builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+// Register services
+builder.Services.AddScoped<ITaskItemService, TaskItemService>();
 
 var app = builder.Build();
 
