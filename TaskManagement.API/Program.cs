@@ -21,10 +21,11 @@ builder.Services.AddDbContext<TaskManagementDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program));
 
 // Register repositories
-builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
 
 // Register services
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITaskItemService, TaskItemService>();
 
 var app = builder.Build();
