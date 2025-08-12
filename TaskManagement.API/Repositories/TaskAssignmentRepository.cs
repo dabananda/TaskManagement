@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskManagement.API.Data;
 using TaskManagement.API.Models;
+using TaskManagement.API.Repositories.Interfaces;
 
 namespace TaskManagement.API.Repositories
 {
-    public class TaskAssignmentRepository
+    public class TaskAssignmentRepository : ITaskAssignmentRepository
     {
         private readonly TaskManagementDbContext _context;
 

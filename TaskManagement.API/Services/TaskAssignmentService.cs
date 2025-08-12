@@ -2,10 +2,11 @@
 using TaskManagement.API.DTOs.TaskAssignment;
 using TaskManagement.API.Models;
 using TaskManagement.API.Repositories.Interfaces;
+using TaskManagement.API.Services.Interfaces;
 
 namespace TaskManagement.API.Services
 {
-    public class TaskAssignmentService
+    public class TaskAssignmentService : ITaskAssignmentService
     {
         private readonly ITaskAssignmentRepository _assignmentRepo;
         private readonly IMapper _mapper;
